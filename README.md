@@ -1,27 +1,53 @@
-# NgDropdown
+<img src="https://img.shields.io/npm/dt/angularx-dropdown?style=for-the-badge">
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
+<br>
 
-## Development server
+This is a basic package for create dropdown with a simple directive
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+<br>
+<h1> Usage </h1>
 
-## Code scaffolding
+`app.module.ts`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+...
 
-## Build
+import { AngularxDropdownModule } from 'angularx-dropdown';
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+@NgModule({
 
-## Running unit tests
+imports: [
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+...
 
-## Running end-to-end tests
+AngularxDropdownModule
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+],
 
-## Further help
+})
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+`dropdownTemplate` This must be an `ng-template`.
+
+`size` Dropdown container's size. `sm: 230px (default) | md: 300px | lg: 400px` Default: `sm` - Optional
+
+`classList`: ` string | string[]` - Optional
+
+<br>
+<h1> Example </h1>
+
+```
+<div>
+    <button
+      ngDropdown
+      [dropdownTemplate]="dropdownTemplate"
+      size="sm"
+      classList="custom-class"
+    >
+      Dropdown Button
+    </button>
+  
+  <ng-template #dropdownTemplate>
+      Dropdown content
+  </ng-template>
+```

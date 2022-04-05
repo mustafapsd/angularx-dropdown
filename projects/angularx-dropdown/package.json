@@ -1,6 +1,21 @@
 {
   "name": "angularx-dropdown",
-  "version": "0.0.1",
+  "version": "0.1.1",
+  "description": "A public package for dropdown with a directive",
+  "author": {
+    "name": "Mustafa Dağlıoğlu",
+    "email": "mustafa.psd@yandex.com"
+  },
+  "displayName": "AngularX Dropdown",
+  "keywords": [
+    "angularx",
+    "dropdown",
+    "directive"
+  ],
+  "repository": {
+    "url": "https://github.com/mustafapsd/angularx-dropdown",
+    "type": "git"
+  },
   "peerDependencies": {
     "@angular/common": "^13.3.0",
     "@angular/core": "^13.3.0"
