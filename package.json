@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build:lib": "cd projects/angularx-dropdown && ng build --prod",
     "publish:lib": "cd dist/angularx-dropdown && npm publish",
-    "build:demo": "cd projects/ng-dropdown-demo && ng build --prod",
+    "build:demo": "cd projects/ng-dropdown-demo && ng build --prod --project ng-dropdown-demo",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
