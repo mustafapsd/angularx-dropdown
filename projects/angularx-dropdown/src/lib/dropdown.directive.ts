@@ -20,6 +20,18 @@ export class DropdownDirective implements OnInit {
   @Input()
   size?: 'sm' | 'md' | 'lg' = 'sm';
 
+  /**
+   * @description - Alignment of dropdown
+   */
+  @Input()
+  alignment?: 'left' | 'right' = 'left';
+
+  /**
+   * @description - Disable close dropdown when clicked outside
+   */
+  @Input()
+  disableCloseOnClickOutside = false;
+
   private dropDownContainer!: HTMLElement | null;
 
   constructor(
@@ -63,8 +75,7 @@ export class DropdownDirective implements OnInit {
 
     // If dropdown is already open, close it
     if (this.dropDownContainer) {
-      this.dropDownContainer.remove();
-      this.dropDownContainer = null;
+      this.closeDropdown();
       return;
     }
 
@@ -86,25 +97,58 @@ export class DropdownDirective implements OnInit {
       }
     }
 
-    dropdownContainer.style.top = `${dropdownButton.clientHeight + dropdownButton.offsetTop}px`;
+    dropdownContainer.style.top = `${dropdownButton.clientHeight + dropdownButton.offsetTop + 5}px`;
 
-    this.renderer.appendChild(dropdownButton.parentElement, dropdownContainer);
+    if (this.alignment === 'right') {
+      dropdownContainer.style.left = `${dropdownButton.clientWidth + dropdownButton.offsetLeft}px`;
+      dropdownContainer.style.transform = 'translateX(-100%)';
+    } else {
+      dropdownContainer.style.left = `${dropdownButton.offsetLeft}px`;
+    }
+
+    const IS_IT_RIGHT_HAND_SIDE = dropdownButton.offsetLeft > (window.innerWidth / 2);
+
+    if (IS_IT_RIGHT_HAND_SIDE) {
+      dropdownContainer.style.maxWidth = `${(window.innerWidth - dropdownButton.offsetLeft) - 20}px`;
+    } else {
+      dropdownContainer.style.maxWidth = `${window.innerWidth - dropdownButton.offsetLeft - dropdownButton.clientWidth - 20}px`;
+    }
 
     this.dropDownContainer = dropdownContainer;
 
+    // Control all the elements with for
+
+    for (const CHILD of Array.from(dropdownContainer.querySelectorAll('*'))) {
+      const ATTRIBUTES = Array.from(CHILD.attributes).map(attr => attr.name);
+      if (ATTRIBUTES.includes('dropdown-close')) {
+        CHILD.addEventListener('click', () => {
+          this.closeDropdown();
+        });
+      }
+    }
+
+    this.renderer.appendChild(dropdownButton.parentElement, dropdownContainer);
+
+
     // Add eventlistener to close dropdown when clicked outside
-    setTimeout(() => {
-      document.addEventListener('click', this.closeDropdown);
-    }, 100);
+    if (!this.disableCloseOnClickOutside) {
+      setTimeout(() => {
+        document.addEventListener('click', this.closeDropdownEvent);
+      }, 100);
+    }
   }
 
   // Close dropdown when clicked outside
-  closeDropdown = (e: MouseEvent) => {
+  private closeDropdownEvent = (e: MouseEvent) => {
     if (!this.dropDownContainer?.contains(e.target as Node)) {
-      this.dropDownContainer?.remove();
-      this.dropDownContainer = null;
-      document.removeEventListener('click', this.closeDropdown);
+      this.closeDropdown();
+      document.removeEventListener('click', this.closeDropdownEvent);
     }
+  }
+
+  private closeDropdown() {
+    this.dropDownContainer?.remove();
+    this.dropDownContainer = null;
   }
 
 }
