@@ -1,0 +1,274 @@
+<div class="container h-100 w-100 py-4">
+  <div class="row justify-content-center">
+    <div class="col-4">
+      <button
+        class="btn btn-primary w-100"
+        ngDropdown
+        [dropdownTemplate]="template"
+      >
+        Alignment Left
+      </button>
+
+      <div class="mt-2">
+        <pre>
+          <code class="language-markup">
+&lt;button
+  class="btn btn-primary w-100"
+  ngDropdown
+  [dropdownTemplate]="template"
+&gt;
+  Alignment Left
+&lt;/button&gt;
+          </code>
+        </pre>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <button
+        class="btn btn-primary w-100"
+        ngDropdown
+        [dropdownTemplate]="template"
+        alignment="right"
+      >
+        Alignment Right
+      </button>
+
+      <div class="mt-2">
+        <pre>
+          <code class="language-markup">
+&lt;button
+  class="btn btn-primary w-100"
+  ngDropdown
+  [dropdownTemplate]="template"
+  alignment="right"
+&gt;
+  Alignment Right
+&lt;/button&gt;
+          </code>
+        </pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-4">
+      <button
+        class="btn btn-primary w-100"
+        ngDropdown
+        [dropdownTemplate]="template"
+        size="sm"
+      >
+        Size: sm
+      </button>
+
+      <div class="mt-2">
+        <pre>
+          <code class="language-markup">
+&lt;button
+  class="btn btn-primary w-100"
+  ngDropdown
+  [dropdownTemplate]="template"
+  size="sm"
+&gt;
+  Size: sm
+&lt;/button&gt;
+          </code>
+        </pre>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <button
+        class="btn btn-primary w-100"
+        ngDropdown
+        [dropdownTemplate]="template"
+        size="md"
+      >
+        Size: md
+      </button>
+
+      <div class="mt-2">
+        <pre>
+          <code class="language-markup">
+&lt;button
+  class="btn btn-primary w-100"
+  ngDropdown
+  [dropdownTemplate]="template"
+  size="md"
+&gt;
+  Size: md
+&lt;/button&gt;
+          </code>
+        </pre>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <button
+        class="btn btn-primary w-100"
+        ngDropdown
+        [dropdownTemplate]="template"
+        size="lg"
+      >
+        Size: lg
+      </button>
+
+      <div class="mt-2">
+        <pre>
+          <code class="language-markup">
+&lt;button
+  class="btn btn-primary w-100"
+  ngDropdown
+  [dropdownTemplate]="template"
+  size="lg"
+&gt;
+  Size: lg
+&lt;/button&gt;
+          </code>
+        </pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4 justify-content-center">
+    <div class="col-4">
+      <button
+        class="btn btn-primary w-100"
+        ngDropdown
+        [dropdownTemplate]="template"
+        [disableCloseOnClickOutside]="true"
+      >
+        Disable Close When Click Outside
+      </button>
+
+      <div class="mt-2">
+        <pre>
+          <code class="language-markup">
+&lt;button
+  class="btn btn-primary w-100"
+  ngDropdown
+  [dropdownTemplate]="template"
+  [disableCloseOnClickOutside]="true"
+&gt;
+  Disable Close When Click Outside
+&lt;/button&gt;
+          </code>
+        </pre>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <button
+        class="btn btn-primary w-100"
+        ngDropdown
+        [dropdownTemplate]="templateWithClose"
+        [disableCloseOnClickOutside]="true"
+      >
+        Close with custom button
+      </button>
+
+      <div class="mt-2">
+        <pre>
+          <code class="language-markup">
+&lt;button
+  class="btn btn-primary w-100"
+  ngDropdown
+  [dropdownTemplate]="templateWithClose"
+  [disableCloseOnClickOutside]="true"
+&gt;
+  Close with custom button
+&lt;/button&gt;
+          </code>
+        </pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4 align-items-center flex-column">
+    <div class="col-6">
+      <label class="col-12">
+        Classlist (Seperate with space, only bootstrap classes):
+      </label>
+      <input
+        type="text"
+        class="form-control"
+        (change)="updateClassList($event)"
+      />
+    </div>
+
+    <div class="col-6 mt-2">
+      <button
+        class="btn btn-primary w-100"
+        ngDropdown
+        [dropdownTemplate]="template"
+        [classList]="classList"
+      >
+        Classlist
+      </button>
+
+      <div class="mt-2">
+        <pre>
+          <code class="language-markup">
+&lt;button
+  class="btn btn-primary w-100"
+  ngDropdown
+  [dropdownTemplate]="template"
+  [classList]="[{{classList}}]"
+&gt;
+  Classlist
+&lt;/button&gt;
+          </code>
+        </pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4 border border-dark">
+    <pre>
+      <code class="language-markup">
+&lt;ng-template #template&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-12"&gt;
+    This is an example of a dropdown template.
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/ng-template&gt;
+      </code>
+    </pre>
+
+    <pre>
+      <code class="language-markup">
+&lt;ng-template #templateWithClose&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-12"&gt;
+      &lt;button class="btn btn-danger" dropdown-close&gt;
+        Close
+      &lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;div class="col-12"&gt;
+      This is an example of a dropdown template with custom close button.
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/ng-template&gt;
+      </code>
+    </pre>
+  </div>
+</div>
+
+<ng-template #template>
+  <div class="row">
+    <div class="col-12">This is an example of a dropdown template.</div>
+  </div>
+</ng-template>
+
+<ng-template #templateWithClose>
+  <div class="row">
+    <div class="col-12">
+      <button class="btn btn-danger" dropdown-close>Close</button>
+    </div>
+
+    <div class="col-12">This is an example of a dropdown template.</div>
+  </div>
+</ng-template>
