@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build:lib": "cd projects/angularx-dropdown && ng build --prod",
     "publish:lib": "cd dist/angularx-dropdown && npm publish",
-    "build:demo": "cd projects/ng-dropdown-demo && ng build --prod --project ng-dropdown-demo",
+    "build:demo": "ng build --prod --base-href https://mustafapsd.github.io/angularx-dropdown/dist/ng-dropdown-demo/ --project ng-dropdown-demo && ngh --dir=dist/ng-dropdown-demo",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -31,6 +31,7 @@
     "@angular/compiler-cli": "~13.3.0",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
+    "angular-cli-ghpages": "^1.0.0",
     "jasmine-core": "~4.0.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
