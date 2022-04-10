@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build:lib": "cd projects/angularx-dropdown && ng build --prod",
     "publish:lib": "cd dist/angularx-dropdown && npm publish",
-    "build:demo": "ng build --prod --base-href https://mustafapsd.github.io/angularx-dropdown/dist/ng-dropdown-demo/ --project ng-dropdown-demo && ngh --dir=dist/ng-dropdown-demo",
+    "build:demo": "ng build --prod --base-href https://mustafapsd.github.io/angularx-dropdown/ --project ng-dropdown-demo && ngh --dir=dist/ng-dropdown-demo",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
